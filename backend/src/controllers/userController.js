@@ -1,0 +1,2 @@
+import {Notification,User} from '../models/index.js';
+export async function favorites(req,res){const user=await User.findById(req.user.id).populate('favorites');res.json(user.favorites)}export async function toggleFavorite(req,res){const user=await User.findById(req.user.id);user.favorites.includes(req.params.eventId)?user.favorites.pull(req.params.eventId):user.favorites.push(req.params.eventId);await user.save();res.json(user.favorites)}export async function notifications(req,res){res.json(await Notification.find({user:req.user.id}).sort({createdAt:-1}))}

@@ -1,0 +1,2 @@
+import React from 'react'; import {ScrollView,StyleSheet,View} from 'react-native';
+export function Screen({children,scroll=true}:{children:React.ReactNode;scroll?:boolean}){const c=<View style={s.inner}>{children}</View>;return scroll?<ScrollView style={s.root} contentContainerStyle={s.content} showsVerticalScrollIndicator={false}>{c}</ScrollView>:<View style={[s.root,s.inner]}>{children}</View>}; const s=StyleSheet.create({root:{flex:1,backgroundColor:'#F7F7FC'},content:{paddingBottom:28},inner:{padding:20}});

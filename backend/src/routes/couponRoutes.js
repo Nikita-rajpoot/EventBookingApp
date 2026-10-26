@@ -1,0 +1,1 @@
+import {Router} from 'express';import {validateCoupon} from '../controllers/couponController.js';import {auth} from '../middleware/auth.js';import {asyncHandler} from '../middleware/asyncHandler.js';const router=Router();router.post('/validate',auth,asyncHandler(validateCoupon));export default router;

@@ -1,0 +1,1 @@
+import mongoose from 'mongoose';const {Schema,model}=mongoose;export const User=model('User',new Schema({name:{type:String,trim:true},email:{type:String,unique:true,index:true,lowercase:true,trim:true},password:{type:String,select:false},role:{type:String,enum:['user','organizer','admin'],default:'user'},favorites:[{type:Schema.Types.ObjectId,ref:'Event'}]},{timestamps:true}));

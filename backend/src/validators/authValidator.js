@@ -1,0 +1,1 @@
+export function validateAuthInput({name,email,password},{requiresName=false}={}){if((requiresName&&!String(name||'').trim())||!/^\S+@\S+\.\S+$/.test(String(email||''))||String(password||'').length<6)return 'Provide a valid email and a password of at least 6 characters.';return null}

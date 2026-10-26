@@ -1,0 +1,1 @@
+export function validateBookingInput({eventId,ticketType,quantity}){if(!eventId||!ticketType||!Number.isInteger(Number(quantity))||Number(quantity)<1)return 'Event, ticket type, and a positive quantity are required.';return null}

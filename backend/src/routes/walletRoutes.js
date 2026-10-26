@@ -1,0 +1,1 @@
+import {Router} from 'express';import {walletHistory} from '../controllers/walletController.js';import {auth} from '../middleware/auth.js';import {asyncHandler} from '../middleware/asyncHandler.js';const router=Router();router.get('/',auth,asyncHandler(walletHistory));export default router;

@@ -1,0 +1,2 @@
+import {Booking,Event} from '../models/index.js';import {answerAssistant} from '../services/assistant.js';
+export async function askAssistant(req,res){const message=String(req.body.message||'').trim();if(!message||message.length>1000)return res.status(400).json({message:'Enter a question of up to 1,000 characters.'});const [events,bookings]=await Promise.all([Event.find().select('title category date location price').lean(),Booking.find({user:req.user.id}).populate('event','title date location').lean()]);res.json({answer:await answerAssistant({message,events,bookings})})}

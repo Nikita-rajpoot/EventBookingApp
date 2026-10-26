@@ -1,0 +1,1 @@
+import {Router} from 'express';import {stats,verifyTicket} from '../controllers/adminController.js';import {admin,auth} from '../middleware/auth.js';import {asyncHandler} from '../middleware/asyncHandler.js';const router=Router();router.use(auth,admin);router.post('/tickets/verify',asyncHandler(verifyTicket));router.get('/stats',asyncHandler(stats));export default router;

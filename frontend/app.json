@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "TaeVerse",
+    "slug": "taeverse",
+    "scheme": "taeverse",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow TaeVerse to scan event tickets."
+        }
+      ],
+      "expo-asset",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "userInterfaceStyle": "light",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "dfc45090-b3b1-40bb-9441-ba44649cc7bf"
+      }
+    },
+    "android": {
+      "package": "com.doll_3112.taeverse"
+    }
+  }
+}

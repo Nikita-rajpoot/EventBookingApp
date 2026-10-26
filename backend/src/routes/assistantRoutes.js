@@ -1,0 +1,1 @@
+import {Router} from 'express';import {askAssistant} from '../controllers/assistantController.js';import {auth} from '../middleware/auth.js';import {asyncHandler} from '../middleware/asyncHandler.js';const router=Router();router.post('/',auth,asyncHandler(askAssistant));export default router;

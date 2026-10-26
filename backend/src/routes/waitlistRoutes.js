@@ -1,0 +1,1 @@
+import {Router} from 'express';import {joinWaitlist,myWaitlist} from '../controllers/waitlistController.js';import {auth} from '../middleware/auth.js';import {asyncHandler} from '../middleware/asyncHandler.js';const router=Router();router.use(auth);router.get('/',asyncHandler(myWaitlist));router.post('/:eventId',asyncHandler(joinWaitlist));export default router;

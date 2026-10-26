@@ -1,0 +1,5 @@
+import bcrypt from 'bcryptjs';import jwt from 'jsonwebtoken';import {User} from '../models/index.js';
+const publicUser=user=>({id:user._id,name:user.name,email:user.email,role:user.role});const token=user=>jwt.sign({id:user._id,role:user.role},process.env.JWT_SECRET,{expiresIn:'7d'});
+export async function register(req,res){const {name,email,password}=req.body;if(!name||!email||!password)return res.status(400).json({message:'Name, email, and password are required'});if(await User.findOne({email}))return res.status(409).json({message:'Email already in use'});const user=await User.create({name,email,password:await bcrypt.hash(password,12)});res.status(201).json({user:publicUser(user),token:token(user)})}
+export async function login(req,res){const user=await User.findOne({email:req.body.email}).select('+password');if(!user||!await bcrypt.compare(req.body.password||'',user.password))return res.status(401).json({message:'Invalid credentials'});res.json({user:publicUser(user),token:token(user)})}
+export function forgotPassword(req,res){res.json({message:'If the email exists, a reset link has been sent.'})}
